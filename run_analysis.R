@@ -1,8 +1,7 @@
 #prepare for reading files from sub-folder, building path, and name the varible
 set <- c("test","train")
 xysub <- c("X", "y", "subject")
-set[1]
-xysub[1]
+
 for (i in 1:2){
     for (j in 1:3){
     url <- paste("./",set[i],"/",xysub[j],"_",set[i],".txt",sep="")
@@ -21,14 +20,16 @@ allx_mean <- apply(all_x,2,mean)
 allx_sd <- apply(all_x, 2, sd)
 
 
+#extract labels name from file
 act_name <- read.table("./activity_labels.txt")
 
-### extract names and put them in dataframe
+### use factor function to finally put them back into Y
 names_Y <- factor(all_y$V1,labels = as.vector(act_name$V2))
 y.name <- as.vector(act_name$V2)
 all_y_with_names <- data.frame(names_Y)
 rm(act_name)
-###
+
+## extract the 561 variables names from features.txt
 names_561 <- read.table("./features.txt")
 x2_all <- all_x
 var.name <- as.vector(names_561$V2)
@@ -36,6 +37,7 @@ rm(names_Y, names_561)
 colnames(x2_all) <- var.name
 colnames(all_sub) <- c("Subject")
 colnames(all_y_with_names) <- c("Act")
+
 #answer of step 4 after putting the column name
 df <- cbind(all_sub,all_y_with_names,x2_all)
 
