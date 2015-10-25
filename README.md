@@ -1,5 +1,5 @@
 ### Cleaning.Data_Ass3
-
+# Step 1
 ### Should first use loop to build path for reading text from subfolders
 
 ```
@@ -16,7 +16,7 @@ xysub <- c("X", "y", "subject")
 ```
 
 
-## #Use rbind() to mergr Train set and Test Set
+### Use rbind() to mergr Train set and Test Set
 ```
 all_x <- rbind(x_test, x_train)
 all_y <- rbind(y_test, y_train)
@@ -25,7 +25,7 @@ all_sub <- rbind(subject_test, subject_train)
 
 
 
-# step 2
+# Step 2
 ### Calculate Mean and sd of each variable after merging
 ### The apply() would simply represent a list of with means and sd of 561 variable
 ```
