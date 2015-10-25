@@ -1,15 +1,17 @@
 # Cleaning.Data_Ass3
 
 # Should first use loop to build path for reading text from subfolders
+
 set <- c("test","train")
 xysub <- c("X", "y", "subject")
 
 for (i in 1:2){
     for (j in 1:3){
-    url <- paste("./",set[i],"/",xysub[j],"_",set[i],".txt",sep="")
-    
-    assign(paste(tolower(xysub[j]),"_",set[i],sep=""),read.table(url,header=FALSE,sep=""))
-    }}
+        url <- paste("./",set[i],"/",xysub[j],"_",set[i],".txt",sep="")
+        # use function assign to smooth the loop
+        assign(paste(tolower(xysub[j]),"_",set[i],sep=""),read.table(url,header=FALSE,sep=""))
+    }
+}
 rm(url)
 
 #Use rbind() to mergr Train set and Test Set
@@ -54,7 +56,7 @@ df <- cbind(all_sub,all_y_with_names,x2_all)
 # Use apply() to return col names with a list of 561 variables
 # Use rbind() to build a new dataframe each time when loop is about to finished
 # Finally, put columns of subject and activity back ino dataframe to export data
-# dimension should therefore be 180 entries, each 30 subject, each 6 activities and 561 means for each variables measured.
+# 180 entries for each 30 subject, each 6 activities and 561 means for each variables measured.
 df_0 <- data.frame()
 
 for (i in 1:30){
